@@ -1,12 +1,19 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Body, Controller, Get, HttpCode, Param, Post, Header, Req, Res  } from '@nestjs/common';
+import {CategorieDTO} from "./DTO/categorie-dto"
 
-@Controller()
+@Controller("categories")
 export class AppController {
-  constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getAllCategories() {
+    
+  }
+
+  @Post()
+  saveCategorie(@Body() categorie: CategorieDTO) {
+    return {
+      status: "OK",
+      message: "Voce inseriou a categoria " + categorie.name
+    }
   }
 }
